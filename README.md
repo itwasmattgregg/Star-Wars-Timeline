@@ -53,12 +53,43 @@ npm run dev
 
 Open **http://localhost:5173** — the holocron loads automatically.
 
+### Live demo
+
+Once GitHub Pages is enabled (see [Deploy](#deploy)), the site publishes to:
+
+**https://itwasmattgregg.github.io/Star-Wars-Timeline/**
+
 ### Production build
 
 ```bash
 npm run build
 npm run preview
 ```
+
+---
+
+## Deploy
+
+This is a **static Vite build** (`dist/`) — no server runtime required. That makes most static hosts a better fit than Fly.io (see below).
+
+### GitHub Pages (recommended — already wired up)
+
+1. Push to `main` (the included workflow builds & deploys automatically).
+2. In the repo on GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. After the first successful run, visit **https://itwasmattgregg.github.io/Star-Wars-Timeline/**
+
+### Other good options
+
+| Host | Best for | Notes |
+|------|----------|-------|
+| **[Cloudflare Pages](https://pages.cloudflare.com/)** | Global CDN, custom domain | Connect repo; build `npm run build`, output `dist`, no `BASE_PATH` needed on a custom domain |
+| **[Netlify](https://www.netlify.com/)** / **[Vercel](https://vercel.com/)** | Zero-config Vite deploys | Connect GitHub; auto-detect Vite |
+| **Fly.io** | Apps with a server/process | Works, but you'd containerize nginx to serve `dist/` — overkill for this project |
+| **GitHub Pages** | Free hosting from this repo | ✅ Workflow included |
+
+### Why not Fly.io?
+
+Fly.io is excellent for **long-running services** (APIs, WebSockets, databases). This timeline is pure **HTML/JS/WebGL** after `npm run build`. Static hosts serve it from a CDN for free with less ops. Use Fly if you later add a backend (e.g. user-submitted timeline entries).
 
 ---
 
