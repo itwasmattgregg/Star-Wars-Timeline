@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galactic Chronology — Star Wars Interactive Timeline</title>
+    <meta
+      name="description"
+      content="A 3D interactive timeline of the Star Wars galaxy — films, games, series, and deep lore plotted in BBY/ABY."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+
+      <header class="hud-header">
+        <div class="logo">
+          <span class="logo-icon">✦</span>
+          <div>
+            <h1>GALACTIC CHRONOLOGY</h1>
+            <p class="subtitle">Interactive 3D Timeline · BBY / ABY</p>
+          </div>
+        </div>
+        <div class="era-legend" id="era-legend"></div>
+      </header>
+
+      <aside class="detail-panel" id="detail-panel" aria-hidden="true">
+        <button class="close-btn" id="close-panel" aria-label="Close panel">×</button>
+        <div class="panel-content" id="panel-content"></div>
+      </aside>
+
+      <div class="controls-bar">
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="search"
+            placeholder="Search the archives…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+
+        <div class="filter-group" id="type-filters"></div>
+
+        <div class="nav-controls">
+          <button id="btn-prev" title="Previous event">◀</button>
+          <button id="btn-play" title="Fly through timeline">▶ Fly</button>
+          <button id="btn-next" title="Next event">▶</button>
+          <button id="btn-reset" title="Reset view">⟲</button>
+        </div>
+      </div>
+
+      <div class="timeline-ruler" id="timeline-ruler">
+        <div class="ruler-track">
+          <div class="ruler-marker" id="ruler-marker"></div>
+        </div>
+        <div class="ruler-labels" id="ruler-labels"></div>
+      </div>
+
+      <div class="hud-corner hud-tl">
+        <span id="current-era">—</span>
+      </div>
+      <div class="hud-corner hud-tr">
+        <span id="current-year">—</span>
+      </div>
+      <div class="hud-corner hud-bl">
+        <div class="controls-legend" id="controls-legend"></div>
+      </div>
+      <div class="hover-tooltip" id="hover-tooltip" hidden></div>
+      <div class="loading" id="loading">
+        <div class="loading-ring"></div>
+        <p>Calculating hyperspace routes…</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
